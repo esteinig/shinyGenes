@@ -12,6 +12,8 @@ shiny::runGitHub('shinyGenes', esteinig)
 
 ## Input
 
+**Files**
+
 1. **Single** GenBank format from NCBI. This allows for the download of gene segments from GenBank. Files are converted to FASTA for comparison with BLASTN.
 2. **Single** FASTA format when annotating with Prokka. This allows for the input of unannotated gene fragments, which are piped and annotated locally with Prokka. Requires a local installation of Prokka.
 
@@ -21,7 +23,11 @@ shiny::runGitHub('shinyGenes', esteinig)
 - When annotating with Prokka, contig names in the FASTA files must be less than 20 character
 - Two or more files must be loaded for plotting with shinyGenes
 
-Examples: `1_SCCmec_V_DAR4145.gbk` , `2_SCCmec_IV_CM11.gbk`, `...`
+**Examples**
+
+* `1_SCCmec_IV_M03-68.gbk` , `2_SCCmec_IV_CM11.gbk`, `...`
+* `1_SCCmec_IV_M03-68.fasta` , `2_SCCmec_IV_CM11.fasta`, `...`
+
 
 ## Dependencies
 
