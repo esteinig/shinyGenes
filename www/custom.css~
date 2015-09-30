@@ -1,0 +1,16 @@
+.main-header .logo {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.box-header .box-title {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.box .box-body {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-size: 14px;
+}
