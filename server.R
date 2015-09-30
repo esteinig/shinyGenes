@@ -53,7 +53,7 @@ run.blast <- function(fasta, evalue, project) {
   fasta_files <- as.list(fasta$datapath)
   names(fasta_files) <- fasta$name
   
-  db_names <- lapply(seq(2,length(fasta_files)), function(x) { make.database(fasta_files[x]) })
+  db_names <- lapply(seq(2,length(fasta_files)), function(x) { make.database(fasta_files[x], project) })
   
   for (i in seq(1, length(db_names))) {
     out_name <- file.path(project, paste(i, 'vs', i+1, '.cmp', sep=''))
@@ -62,14 +62,14 @@ run.blast <- function(fasta, evalue, project) {
   
 }
 
-make.database <- function(fasta_file) {
+make.database <- function(fasta_file, project) {
   
   #  System call to generate DB from FASTA file using BLAST+ 
   
   fasta_name <- strsplit(names(fasta_file), "\\.")[[1]][1]
-  dbname <- paste(fasta_name, '_DB', sep='')
+  dbname <- file.path(project, paste(fasta_name, '_DB', sep=''))
   
-  cmd <- paste('makeblastdb', '-in', names(fasta_file), '-dbtype', "'nucl'", '-out', dbname)
+  cmd <- paste('makeblastdb', '-in', fasta_file, '-dbtype', "'nucl'", '-out', dbname)
   
   system(cmd, ignore.stdout = TRUE)
   
@@ -286,10 +286,12 @@ shinyServer(function(input, output, session) {
       
       message('\nNo files (.fasta) detected, generating from GenBank...\n')
       
-      fasta_names <- sapply(files$genbank$name, function(x) {
-        name <- paste0(strsplit(x, "\\.")[[1]][1], '.fasta')
+      fasta_names <- apply(files$genbank, 1, function(x) {
+        x <- as.list(x)
+        name <- paste0(strsplit(x$name, "\\.")[[1]][1], '.fasta')
         path <- file.path(project, name)
-        gb2fasta(x, path)
+        gbk <- x$datapath
+        gb2fasta(gbk, path)
         return(name)
         
       })
