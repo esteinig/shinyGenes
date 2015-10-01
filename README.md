@@ -1,5 +1,7 @@
 # shinyGenes
 
+![](https://github.com/esteinig/shinyGenes/blob/master/examples/example_screen.png)
+
 Shiny application for annotating and plotting short gene segments with Prokka, BLAST and genoPlotR. The application is designed for comparison of short gene segments (rather than whole genomes) such as mobile genetic elements, viruses or other interesting genome fragments from prokaryotic organisms.
 
 *Alpha Version: several options in the interface are not wired up, error checks are not properly implemented, plot downloads are not implemented; please use with patience.*
