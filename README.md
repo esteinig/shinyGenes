@@ -9,7 +9,7 @@ Shiny application for annotating and plotting short gene segments with Prokka, B
 ## Run
 
 ```
-shiny::runGitHub('shinyGenes', esteinig)
+shiny::runGitHub('shinyGenes', 'esteinig')
 ```
 
 ## Input
